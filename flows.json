@@ -1,0 +1,209 @@
+[
+    {
+        "id": "31e93449200d0f99",
+        "type": "tab",
+        "label": "FLUJO_NUBE",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "2fdfe069f5c9a57a",
+        "type": "mqtt in",
+        "z": "31e93449200d0f99",
+        "name": "",
+        "topic": "clase-undac-jhoshua-7f3k/semaforo",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "c9bdcdd9de578829",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 160,
+        "y": 120,
+        "wires": [
+            [
+                "f53a60a02c9dafa1"
+            ]
+        ]
+    },
+    {
+        "id": "f53a60a02c9dafa1",
+        "type": "function",
+        "z": "31e93449200d0f99",
+        "name": "function 3",
+        "func": "const d = msg.payload;\nreturn [\n  { payload: !!d.rojo },\n  { payload: !!d.amarillo },\n  { payload: !!d.verde }\n];",
+        "outputs": 3,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 420,
+        "y": 200,
+        "wires": [
+            [
+                "3c987376d79ed0fa"
+            ],
+            [
+                "4c590177058bbaa1"
+            ],
+            [
+                "94795b821d839b03"
+            ]
+        ]
+    },
+    {
+        "id": "3c987376d79ed0fa",
+        "type": "ui_led",
+        "z": "31e93449200d0f99",
+        "order": 3,
+        "group": "d6922995c723c0b3",
+        "width": 0,
+        "height": 0,
+        "label": "ROJO",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ff0000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 630,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4c590177058bbaa1",
+        "type": "ui_led",
+        "z": "31e93449200d0f99",
+        "order": 4,
+        "group": "d6922995c723c0b3",
+        "width": 0,
+        "height": 0,
+        "label": "AMARILLO",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#ffff00",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": false,
+        "name": "",
+        "x": 630,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "94795b821d839b03",
+        "type": "ui_led",
+        "z": "31e93449200d0f99",
+        "order": 5,
+        "group": "d6922995c723c0b3",
+        "width": 0,
+        "height": 0,
+        "label": "VERDE",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#808080",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 630,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "c9bdcdd9de578829",
+        "type": "mqtt-broker",
+        "name": "SERVER_HIVEMQ",
+        "broker": "broker.hivemq.com",
+        "port": 1883,
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": 4,
+        "keepalive": 60,
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "d6922995c723c0b3",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "5781f3a81440d666",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "5781f3a81440d666",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "11326719253edfca",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-contrib-ui-led": "0.4.11",
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
